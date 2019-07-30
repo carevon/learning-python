@@ -20,16 +20,17 @@ def jogar():
             marca_ponto(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
-            print("Ops, você errou! Faltam {} tentativas.".format(6 - erros))
+            desenha_forca(erros)
 
-        enforcou = erros == 6
+        enforcou = erros == 7
         acertou = "_" not in letras_acertadas
+
         print(letras_acertadas)
 
     if(acertou):
         imprime_msg_vencedor()
     else:
-        imprime_msg_perdedor()
+        imprime_msg_perdedor(palavra_secreta)
     print("Fim de jogo")
 
 # MÉTODO QUE IMPRIME AS MENSAGENS DE ABERTURA
@@ -39,8 +40,8 @@ def imprime_msg_abertura():
     print("****************************************")
 
 # MÉTODO QUE CARREGA AS PALAVRAS E RETORNA UMA PALAVRA ALEATÓRIA
-def carregar_palavras():
-    with open("palavras.txt", "r") as arquivo:
+def carregar_palavras(nm_arquivo="palavras.txt"):
+    with open(nm_arquivo, "r") as arquivo:
         palavras = []
         for linha in arquivo:
             linha = linha.strip()
@@ -60,7 +61,7 @@ def pede_chute():
     chute = chute.strip().upper()
     return chute
 
-def marca_ponto(chute, palavra_secreta, letras_acertadas):
+def marca_ponto(chute, letras_acertadas, palavra_secreta):
     index = 0
     for letra in palavra_secreta:
         if (chute.upper() == letra.upper()):
@@ -68,9 +69,87 @@ def marca_ponto(chute, palavra_secreta, letras_acertadas):
         index += 1
 
 def imprime_msg_vencedor():
-    print("Você ganhou!!!")
-def imprime_msg_perdedor():
-    print("Você perdeu!!")
+    print("Parabéns, você ganhou!")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+
+def imprime_msg_perdedor(palavra_secreta):
+    print("Puxa, você foi enforcado!")
+    print("A palavra era {}".format(palavra_secreta))
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
 
 if(__name__ == "__main__"):
     jogar()
