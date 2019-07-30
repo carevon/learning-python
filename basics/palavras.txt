@@ -2,7 +2,7 @@ Abacate
 Abacaxi
 Abiu
 Araçá
-Azeitona (Olive)
+Azeitona
 Açaí
 Acerola
 Ameixa
@@ -43,8 +43,8 @@ Dovyalis
 Durião
 Embaúba
 Feijoa
-Figo (Fig)
-Framboesa (Raspberry)
+Figo
+Framboesa
 Fruta-pão
 Frutas do cerrado
 Fruta-do-conde
