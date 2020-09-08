@@ -22,7 +22,7 @@ print(
 
 # -- Using .format() --
 
-# We can define template strings and then replace parts of it with another value, instead of doing it directly in the string.
+# We can define templates strings and then replace parts of it with another value, instead of doing it directly in the string.
 
 greeting = "Hello, {}"
 with_name = greeting.format("Rolf")
