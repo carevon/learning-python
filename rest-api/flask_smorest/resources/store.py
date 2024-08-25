@@ -9,7 +9,7 @@ from db import stores
 
 blp = Blueprint("store", __name__, description="Operations on stores")
 
-@blp.route("/store/<string:stored_id>")
+@blp.route("/store/<string:store_id>")
 class Store(MethodView):
     def get(self, store_id):
         try:
