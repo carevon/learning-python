@@ -46,7 +46,7 @@ class StoreList(MethodView):
         except IntegrityError:
             db.session.rollback()
             abort(400, message="A store with the same name already exists.")
-        except SQLAlchemyError as e:
+        except SQLAlchemyError:
             db.session.rollback()
             abort(400, message="An error occurred while creating the store.")
 
