@@ -34,5 +34,5 @@ class TagSchema(PlainTagSchema):
 
 class TagAndItemSchema(Schema):
     message = fields.Str()
-    item_id = fields.Int(required=True)
-    tag_id = fields.Int(required=True)
+    item_id = fields.Nested(ItemSchema)
+    tag_id = fields.Nested(TagSchema)
