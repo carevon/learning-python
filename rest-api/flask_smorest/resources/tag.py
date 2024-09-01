@@ -66,7 +66,7 @@ class Tag(MethodView):
         tag = TagModel.query.get_or_404(tag_id)
         return tag
     
-    @blp.resposne(202, description="Deletes a tag if it is not linked to any item.", 
+    @blp.response(202, description="Deletes a tag if it is not linked to any item.", 
                   example={'message': 'Tag deleted.'})
     @blp.response(400, description="Returned if Tag is assigned to one or more items.")
     def delete(self, tag_id):
