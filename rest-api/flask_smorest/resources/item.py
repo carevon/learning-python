@@ -1,6 +1,6 @@
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
 from sqlalchemy.exc import SQLAlchemyError
 
 from db import db
@@ -20,6 +20,7 @@ class Item(MethodView):
         except KeyError:
             abort(404, message="Item not found")
 
+    @jwt_required()
     @blp.arguments(ItemUpdateSchema)
     @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
@@ -34,8 +35,13 @@ class Item(MethodView):
         db.session.commit()
         return item
 
+    @jwt_required()
     def delete(self, item_id):
         try:
+            jwt = get_jwt()
+            if not jwt["is_admin"]:
+                abort(403, message="Admin privilege required.")
+            
             item = ItemModel.query.get_or_404(item_id)
             db.session.delete(item)
             db.session.commit()
