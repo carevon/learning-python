@@ -23,8 +23,8 @@ def create_app(db_url=None):
     load_dotenv()
 
     connection = redis.from_url(os.environ.get("REDIS_URL"))
-    app.queue = Queue(connection=connection)
-    
+    app.queue = Queue("emails", connection=connection)
+
     app.config["PROPAGATE_EXCEPTIONS"] = True
     app.config["API_TITLE"] = "Stores REST API"
     app.config["API_VERSION"] = "v1"
